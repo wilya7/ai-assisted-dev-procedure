@@ -1,64 +1,69 @@
 # Table of Contents
 
-1.  [Living Document Update Prompt](#orgfc09745)
-    1.  [Update Protocol](#org723d296)
-2.  [Overview](#orgb7d49ac)
-3.  [Human-LLM Interaction Framework](#org4254d0c)
-    1.  [Clear handoff specifications for each phase](#org8f18e50)
-    2.  [Key Principle](#org6230256)
-4.  [Phase 1: Project Bootstrap](#org009487a)
-    1.  [1.1 Goal Clarification](#org4767831)
-        1.  [HUMAN ACTIVITY (No LLM involvement)](#orgce299d8)
-    2.  [1.2 Negative Space Mapping (Socratic Failure Mode Analysis)](#org561eae2)
-        1.  [1.2.1 Data Flow Failure Modes](#org02ae595)
-        2.  [1.2.2 Assumption Violations](#org43a0922)
-        3.  [1.2.3 Integration Disasters](#orgb671bac)
-        4.  [1.2.4 Scale-Up Failures](#orgcb0e6a1)
-5.  [Phase 2: Specification Development](#orgd5e55ac)
-    1.  [2.1 Technical Specification Brainstorming (Socratic Design Dialog)](#org8c9f7a2)
-        1.  [HUMAN INPUT TO LLM:](#org04fae07)
-        2.  [Workflow](#org1899970)
-    2.  [2.2 Specification Iteration and Validation](#org58404bf)
-        1.  [Iterative refinement process](#org7d72602)
-        2.  [Decision criteria for moving to Phase 3.1](#orgbea1918)
-6.  [Phase 3: Atomic Unit Decomposition](#orgc0687d4)
-    1.  [3.1 Specification Decomposition (Two-Document Approach)](#org297a05a)
-        1.  [3.1.1 Generate Decomposition Documents](#org9d56db3)
-        2.  [3.2 Decomposition Quality Control](#orgb152afc)
-7.  [Phase 4: Systematic Code Development](#orgfa411ca)
-    1.  [4.1 Repository Setup](#orgc3a8ecb)
-        1.  [Setup Tasks](#org8f041b5)
-    2.  [4.2 Per-Unit Development Workflow](#org07991cf)
-        1.  [Step 1: Prompt Execution](#org8772080)
-        2.  [Step 2: Code Understanding (Learning Phase)](#org01eb2be)
-        3.  [Step 3: Integration](#org807604a)
-        4.  [Step 4: Testing](#orgc598113)
-        5.  [Step 5: Optional Troubleshooting](#orgdda6331)
-        6.  [Step 6: Version Control](#org448a32c)
-        7.  [Step 7: Documentation](#org3b11154)
-        8.  [Step 8: Progress Tracking](#org0daaac5)
-    3.  [4.3 Integration Milestones](#org2909991)
-        1.  [Milestone Tasks](#orgc967d76)
-8.  [Phase 5: Quality Assurance and Finalization](#orgfd2334c)
-    1.  [5.1 Final Integration Testing](#orge9a2299)
-    2.  [5.2 Documentation Finalization](#org9e43004)
-    3.  [5.3 Repository Quality Standards](#org63f98ce)
-        1.  [Quality Checklist](#orgbbe39ff)
-9.  [Workflow Timing Guidelines](#orgdf5d951)
-    1.  [Phase Distribution](#org7f8d176)
-    2.  [Total Range](#orgae9cb18)
-    3.  [Key Insight](#org44eaad2)
-10. [Success Criteria](#org4fdab5b)
-11. [Adaptation Guidelines](#org7737aec)
-    1.  [For simpler projects](#orgb559a85)
-    2.  [For more complex projects](#orgff56b5c)
-    3.  [Learning focus adjustments](#orgaaa0324)
-12. [Complete Human-LLM Workflow Summary](#orgdeeb054)
-    1.  [Key Insight](#org5578d4d)
+1.  [Living Document Update Prompt](#org9bcff7d)
+    1.  [Update Protocol](#org1c832ca)
+2.  [Overview](#orgb9b7e9d)
+3.  [Human-LLM Interaction Framework](#orgdd973e9)
+    1.  [Clear handoff specifications for each phase](#orgc915691)
+    2.  [Key Principle](#org96ff3d6)
+    3.  [Context Window Management](#org5564970)
+        1.  [Phase Transition Template](#org0634823)
+        2.  [**When to Use Clean Handoffs**:](#org4f785f1)
+        3.  [Benefits:](#org701fe9e)
+4.  [Phase 1: Project Bootstrap](#org5dabba0)
+    1.  [1.1 Goal Clarification](#org22ade4c)
+        1.  [HUMAN ACTIVITY (No LLM involvement)](#orgb8321bc)
+    2.  [1.2 Negative Space Mapping (Socratic Failure Mode Analysis)](#org2cf1213)
+        1.  [1.2.1 Data Flow Failure Modes](#org9174631)
+        2.  [1.2.2 Assumption Violations](#orga85bdd1)
+        3.  [1.2.3 Integration Disasters](#orgb3fd2b1)
+        4.  [1.2.4 Scale-Up Failures](#orgb0dfa57)
+5.  [Phase 2: Specification Development](#org4403c4b)
+    1.  [2.1 Technical Specification Brainstorming (Socratic Design Dialog)](#org395f583)
+        1.  [HUMAN INPUT TO LLM:](#orgee63b56)
+        2.  [Workflow](#org89efa28)
+        3.  [Phase Transition Note](#orgae04a9a)
+    2.  [2.2 Specification Iteration and Validation](#org6ebf16b)
+        1.  [Iterative refinement process](#org5b9c16e)
+        2.  [Decision criteria for moving to Phase 3.1](#org403ab5a)
+6.  [Phase 3: Atomic Unit Decomposition](#orgda62028)
+    1.  [3.1 Specification Decomposition (Two-Document Approach)](#orgdd80d9c)
+        1.  [3.1.1 Generate Decomposition Documents](#org8ea04c5)
+        2.  [3.2 Decomposition Quality Control](#org4b727ca)
+7.  [Phase 4: Systematic Code Development](#org13a0332)
+    1.  [4.1 Repository Setup](#orgf898574)
+        1.  [Setup Tasks](#org154d03d)
+    2.  [4.2 Per-Unit Development Workflow](#org9814c8c)
+        1.  [Step 1: Prompt Execution](#orga7b40ff)
+        2.  [Step 2: Code Understanding (Learning Phase)](#org9281246)
+        3.  [Step 3: Integration](#org699091c)
+        4.  [Step 4: Testing](#org8f18bd0)
+        5.  [Step 5: Optional Troubleshooting](#org8527594)
+        6.  [Step 6: Version Control](#org44529e8)
+        7.  [Step 7: Documentation](#org27a476e)
+        8.  [Step 8: Progress Tracking](#org17c8e42)
+    3.  [4.3 Integration Milestones](#org97eed2f)
+        1.  [Milestone Tasks](#orgf80069d)
+8.  [Phase 5: Quality Assurance and Finalization](#orgd149375)
+    1.  [5.1 Final Integration Testing](#org2e95ad8)
+    2.  [5.2 Documentation Finalization](#org66ee23d)
+    3.  [5.3 Repository Quality Standards](#orgc5cc863)
+        1.  [Quality Checklist](#org1a36b4f)
+9.  [Workflow Timing Guidelines](#org92a40d1)
+    1.  [Phase Distribution](#orge522f56)
+    2.  [Total Range](#org6ae4b7b)
+    3.  [Key Insight](#orga82a224)
+10. [Success Criteria](#org3a62132)
+11. [Adaptation Guidelines](#org67eab4f)
+    1.  [For simpler projects](#orgf160839)
+    2.  [For more complex projects](#orgf0f3c50)
+    3.  [Learning focus adjustments](#org2db42ce)
+12. [Complete Human-LLM Workflow Summary](#org9bc010c)
+    1.  [Key Insight](#org4d4fd97)
 
 
 
-<a id="orgfc09745"></a>
+<a id="org9bcff7d"></a>
 
 # Living Document Update Prompt
 
@@ -85,7 +90,7 @@
     Ask me clarifying questions about my experience if needed to provide the most helpful refinements.
 
 
-<a id="org723d296"></a>
+<a id="org1c832ca"></a>
 
 ## Update Protocol
 
@@ -96,19 +101,19 @@
 -   Maintain the core philosophy: systematic design thinking + learning-focused implementation + research-grade quality
 
 
-<a id="orgb7d49ac"></a>
+<a id="orgb9b7e9d"></a>
 
 # Overview
 
 This procedure systematically develops focused, project-specific data analysis tools while maintaining research-grade quality standards. The workflow emphasizes thorough upfront planning to minimize debugging time and maximize learning value through granular, testable code units.
 
 
-<a id="org4254d0c"></a>
+<a id="orgdd973e9"></a>
 
 # Human-LLM Interaction Framework
 
 
-<a id="org8f18e50"></a>
+<a id="orgc915691"></a>
 
 ## Clear handoff specifications for each phase
 
@@ -187,24 +192,85 @@ This procedure systematically develops focused, project-specific data analysis t
 </table>
 
 
-<a id="org6230256"></a>
+<a id="org96ff3d6"></a>
 
 ## Key Principle
 
 Documents created FOR LLMs are structured for machine consumption. Documents created BY LLMs are structured for human use. Documents created by humans FOR humans prioritize clarity and decision-making.
 
 
-<a id="org009487a"></a>
+<a id="org5564970"></a>
+
+## Context Window Management
+
+**Problem**: Socratic questioning phases (1.2, 2.1) generate extensive dialogues that can overwhelm context windows and reduce focus in subsequent phases.
+**Solution**: Use clean handoff transitions between major phases to maintain conversation focus and preserve only essential work products.
+
+
+<a id="org0634823"></a>
+
+### Phase Transition Template
+
+    Phase Transition: Clean Handoff Prompt
+    CONTEXT RESET FOR SYSTEMATIC DATA SCIENCE DEVELOPMENT
+    
+    I'm following a systematic procedure for AI-assisted data science tool development. I've completed [PREVIOUS PHASE] and need to begin [NEXT PHASE] with a fresh conversation context.
+    COMPLETED WORK FROM PREVIOUS PHASE:
+    
+    [DOCUMENT TYPE - e.g., "FINAL INTENT DOCUMENT" or "VALIDATED TECHNICAL SPECIFICATIONS"]:
+    
+    [Insert complete final document from previous phase here]
+    
+    RELEVANT SUPPORTING MATERIALS:
+    
+        Code reuse opportunities identified: [brief list if applicable]
+        Key constraints/requirements: [brief summary if relevant]
+    
+    NEXT PHASE REQUIREMENTS:
+    
+    I need to proceed with [NEXT PHASE NAME AND DESCRIPTION] according to this methodology:
+    
+    [Insert relevant section from the procedure document for the next phase]
+    
+    YOUR ROLE:
+    
+    [Specific instructions for LLM role in next phase - e.g., "Act as my Socratic teacher to help map failure modes" or "Help me decompose these specifications into atomic units"]
+    READY TO BEGIN:
+    
+    [First specific prompt/question for the new phase]
+
+
+<a id="org4f785f1"></a>
+
+### **When to Use Clean Handoffs**:
+
+-   **After Phase 1.2** -> Before Phase 2.1 (carry forward: Intent Document + Negative Space Map)
+-   **After Phase 2.1** -> Before Phase 2.2 (carry forward: Intent + Negative Space + Draft Specifications)
+-   **After Phase 2.2** -> Before Phase 3.1 (carry forward: Final Specifications + Reuse Assessment)
+-   **After Phase 2.2** -> Before Phase 3.1 (carry forward: Final Specifications + Reuse Assessment)
+
+
+<a id="org701fe9e"></a>
+
+### Benefits:
+
+-   Prevents context window bloat from lengthy Socratic dialogues
+-   Maintains sharp focus for each development phase
+-   Preserves essential work products while discarding conversational noise
+-   Allows for more precise LLM interactions in later phases
+
+
+<a id="org5dabba0"></a>
 
 # Phase 1: Project Bootstrap
 
 
-<a id="org4767831"></a>
+<a id="org22ade4c"></a>
 
 ## 1.1 Goal Clarification
 
 
-<a id="orgce299d8"></a>
+<a id="orgb8321bc"></a>
 
 ### HUMAN ACTIVITY (No LLM involvement)
 
@@ -245,14 +311,14 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     -   Preserves learning value through adaptation rather than repetition
 
 
-<a id="org561eae2"></a>
+<a id="org2cf1213"></a>
 
 ## 1.2 Negative Space Mapping (Socratic Failure Mode Analysis)
 
 **Process**: Engage LLM as Socratic teacher to systematically explore failure modes across four dimensions:
 
 
-<a id="org02ae595"></a>
+<a id="org9174631"></a>
 
 ### 1.2.1 Data Flow Failure Modes
 
@@ -278,7 +344,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     **Continue until you can confidently answer**: "How could each data transformation create impossible requirements for downstream components?"
 
 
-<a id="org43a0922"></a>
+<a id="orga85bdd1"></a>
 
 ### 1.2.2 Assumption Violations
 
@@ -299,7 +365,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     **Continue until**: You've identified assumptions that could cascade into system-wide design changes.
 
 
-<a id="orgb671bac"></a>
+<a id="orgb3fd2b1"></a>
 
 ### 1.2.3 Integration Disasters
 
@@ -320,7 +386,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     **Continue until**: You understand how each component's failure modes affect every other component.
 
 
-<a id="orgcb0e6a1"></a>
+<a id="orgb0dfa57"></a>
 
 ### 1.2.4 Scale-Up Failures
 
@@ -342,18 +408,22 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 
     Negative Space Map document (created by human, consolidating notes from all four dialogues) listing identified failure modes and their potential cascading effects.
 
+4.  Phase Transition Note
 
-<a id="orgd5e55ac"></a>
+    Before proceeding to Phase 2.1, consider using the Phase Transition Template (Section 3.3) to start fresh with a clean context window, carrying forward only your Intent Document and completed Negative Space Map.
+
+
+<a id="org4403c4b"></a>
 
 # Phase 2: Specification Development
 
 
-<a id="org8c9f7a2"></a>
+<a id="org395f583"></a>
 
 ## 2.1 Technical Specification Brainstorming (Socratic Design Dialog)
 
 
-<a id="org04fae07"></a>
+<a id="orgee63b56"></a>
 
 ### HUMAN INPUT TO LLM:
 
@@ -381,7 +451,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     Start with the highest-level architectural decisions and progressively get more specific.
 
 
-<a id="org1899970"></a>
+<a id="org89efa28"></a>
 
 ### Workflow
 
@@ -392,12 +462,19 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 **Continue until**: You have systematically explored all major design decisions and their implications.
 
 
-<a id="org58404bf"></a>
+<a id="orgae04a9a"></a>
+
+### Phase Transition Note
+
+The extensive design dialogue in this phase may warrant a clean context reset before Phase 2.2 using the Phase Transition Template.
+
+
+<a id="org6ebf16b"></a>
 
 ## 2.2 Specification Iteration and Validation
 
 
-<a id="org7d72602"></a>
+<a id="org5b9c16e"></a>
 
 ### Iterative refinement process
 
@@ -423,7 +500,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     -   Ensure complete coverage of identified requirements
 
 
-<a id="orgbea1918"></a>
+<a id="org403ab5a"></a>
 
 ### Decision criteria for moving to Phase 3.1
 
@@ -440,17 +517,17 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     > **Critical Time Allocation Note**: Phases 1.1 through 2.2 should consume approximately **67% of total project time**. This upfront investment in design quality dramatically reduces debugging and rework time in later phases.
 
 
-<a id="orgc0687d4"></a>
+<a id="orgda62028"></a>
 
 # Phase 3: Atomic Unit Decomposition
 
 
-<a id="org297a05a"></a>
+<a id="orgdd80d9c"></a>
 
 ## 3.1 Specification Decomposition (Two-Document Approach)
 
 
-<a id="org9d56db3"></a>
+<a id="org8ea04c5"></a>
 
 ### 3.1.1 Generate Decomposition Documents
 
@@ -524,8 +601,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     -   **Document 1**: Prompt Engineering Guide (structured for LLM consumption)
     -   **Document 2**: Personal Todo List (structured for human project management)
 
+3.  Phase Transition Note.
 
-<a id="orgb152afc"></a>
+    The extensive design dialogue in this phase may warrant a clean context reset before Phase 2.2 using the Phase Transition Template.
+
+
+<a id="org4b727ca"></a>
 
 ### 3.2 Decomposition Quality Control
 
@@ -545,17 +626,17 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     Validated Prompt Engineering Guide and Personal Todo List ready for development
 
 
-<a id="orgfa411ca"></a>
+<a id="org13a0332"></a>
 
 # Phase 4: Systematic Code Development
 
 
-<a id="orgc3a8ecb"></a>
+<a id="orgf898574"></a>
 
 ## 4.1 Repository Setup
 
 
-<a id="org8f041b5"></a>
+<a id="org154d03d"></a>
 
 ### Setup Tasks
 
@@ -566,12 +647,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 5.  Create initial documentation structure
 
 
-<a id="org07991cf"></a>
+<a id="org9814c8c"></a>
 
 ## 4.2 Per-Unit Development Workflow
 
 
-<a id="org8772080"></a>
+<a id="orga7b40ff"></a>
 
 ### Step 1: Prompt Execution
 
@@ -588,7 +669,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     -   **HUMAN ACTIVITY**: Request modifications if output doesn't match prompt specifications
 
 
-<a id="org01eb2be"></a>
+<a id="org9281246"></a>
 
 ### Step 2: Code Understanding (Learning Phase)
 
@@ -621,7 +702,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     **Continue until**: You can explain the code confidently without reference.
 
 
-<a id="org807604a"></a>
+<a id="org699091c"></a>
 
 ### Step 3: Integration
 
@@ -631,7 +712,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Update documentation
 
 
-<a id="orgc598113"></a>
+<a id="org8f18bd0"></a>
 
 ### Step 4: Testing
 
@@ -641,7 +722,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   If tests fail: troubleshoot systematically, document issues
 
 
-<a id="orgdda6331"></a>
+<a id="org8527594"></a>
 
 ### Step 5: Optional Troubleshooting
 
@@ -650,7 +731,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   **HUMAN ACTIVITY**: Apply fixes, test edge cases manually, refine error handling
 
 
-<a id="org448a32c"></a>
+<a id="org44529e8"></a>
 
 ### Step 6: Version Control
 
@@ -659,7 +740,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Update changelog
 
 
-<a id="org3b11154"></a>
+<a id="org27a476e"></a>
 
 ### Step 7: Documentation
 
@@ -668,7 +749,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Note lessons learned for future reference
 
 
-<a id="org0daaac5"></a>
+<a id="org17c8e42"></a>
 
 ### Step 8: Progress Tracking
 
@@ -677,12 +758,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Proceed to next unit
 
 
-<a id="org2909991"></a>
+<a id="org97eed2f"></a>
 
 ## 4.3 Integration Milestones
 
 
-<a id="orgc967d76"></a>
+<a id="orgf80069d"></a>
 
 ### Milestone Tasks
 
@@ -693,12 +774,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 5.  Update project documentation
 
 
-<a id="orgfd2334c"></a>
+<a id="orgd149375"></a>
 
 # Phase 5: Quality Assurance and Finalization
 
 
-<a id="orge9a2299"></a>
+<a id="org2e95ad8"></a>
 
 ## 5.1 Final Integration Testing
 
@@ -708,7 +789,7 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Document any remaining limitations
 
 
-<a id="org9e43004"></a>
+<a id="org66ee23d"></a>
 
 ## 5.2 Documentation Finalization
 
@@ -718,12 +799,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   Add references to theoretical background
 
 
-<a id="org63f98ce"></a>
+<a id="orgc5cc863"></a>
 
 ## 5.3 Repository Quality Standards
 
 
-<a id="orgbbe39ff"></a>
+<a id="org1a36b4f"></a>
 
 ### Quality Checklist
 
@@ -735,12 +816,12 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
 -   [ ] Version tagging
 
 
-<a id="orgdf5d951"></a>
+<a id="org92a40d1"></a>
 
 # Workflow Timing Guidelines
 
 
-<a id="org7f8d176"></a>
+<a id="orge522f56"></a>
 
 ## Phase Distribution
 
@@ -766,21 +847,21 @@ Documents created FOR LLMs are structured for machine consumption. Documents cre
     -   Final testing and documentation: 2-4 hours
 
 
-<a id="orgae9cb18"></a>
+<a id="org6ae4b7b"></a>
 
 ## Total Range
 
 4.5-7.5 days
 
 
-<a id="org44eaad2"></a>
+<a id="orga82a224"></a>
 
 ## Key Insight
 
 Heavy upfront design investment (67% of time) dramatically reduces debugging and rework time, making total development time shorter and more predictable.
 
 
-<a id="org4fdab5b"></a>
+<a id="org3a62132"></a>
 
 # Success Criteria
 
@@ -796,12 +877,12 @@ A successful project completion includes:
 -   [X] Tool addresses original problem statement
 
 
-<a id="org7737aec"></a>
+<a id="org67eab4f"></a>
 
 # Adaptation Guidelines
 
 
-<a id="orgb559a85"></a>
+<a id="orgf160839"></a>
 
 ## For simpler projects
 
@@ -810,7 +891,7 @@ A successful project completion includes:
 -   Streamline documentation requirements
 
 
-<a id="orgff56b5c"></a>
+<a id="orgf0f3c50"></a>
 
 ## For more complex projects
 
@@ -820,7 +901,7 @@ A successful project completion includes:
 -   Include performance testing at integration points
 
 
-<a id="orgaaa0324"></a>
+<a id="org2db42ce"></a>
 
 ## Learning focus adjustments
 
@@ -831,7 +912,7 @@ A successful project completion includes:
 > This procedure provides a systematic, scalable approach to developing research-grade data science tools while maintaining learning objectives and minimizing debugging overhead through comprehensive upfront planning.
 
 
-<a id="orgdeeb054"></a>
+<a id="org9bc010c"></a>
 
 # Complete Human-LLM Workflow Summary
 
@@ -948,7 +1029,7 @@ A successful project completion includes:
 </table>
 
 
-<a id="org5578d4d"></a>
+<a id="org4d4fd97"></a>
 
 ## Key Insight
 

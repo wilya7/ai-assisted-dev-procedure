@@ -61,6 +61,54 @@ This procedure systematically develops focused, project-specific data analysis t
 ** Key Principle
 Documents created FOR LLMs are structured for machine consumption. Documents created BY LLMs are structured for human use. Documents created by humans FOR humans prioritize clarity and decision-making.
 
+** Context Window Management
+*Problem*: Socratic questioning phases (1.2, 2.1) generate extensive dialogues that can overwhelm context windows and reduce focus in subsequent phases.
+*Solution*: Use clean handoff transitions between major phases to maintain conversation focus and preserve only essential work products.
+
+*** Phase Transition Template
+#+BEGIN_SRC text
+Phase Transition: Clean Handoff Prompt
+CONTEXT RESET FOR SYSTEMATIC DATA SCIENCE DEVELOPMENT
+
+I'm following a systematic procedure for AI-assisted data science tool development. I've completed [PREVIOUS PHASE] and need to begin [NEXT PHASE] with a fresh conversation context.
+COMPLETED WORK FROM PREVIOUS PHASE:
+
+[DOCUMENT TYPE - e.g., "FINAL INTENT DOCUMENT" or "VALIDATED TECHNICAL SPECIFICATIONS"]:
+
+[Insert complete final document from previous phase here]
+
+RELEVANT SUPPORTING MATERIALS:
+
+    Code reuse opportunities identified: [brief list if applicable]
+    Key constraints/requirements: [brief summary if relevant]
+
+NEXT PHASE REQUIREMENTS:
+
+I need to proceed with [NEXT PHASE NAME AND DESCRIPTION] according to this methodology:
+
+[Insert relevant section from the procedure document for the next phase]
+
+YOUR ROLE:
+
+[Specific instructions for LLM role in next phase - e.g., "Act as my Socratic teacher to help map failure modes" or "Help me decompose these specifications into atomic units"]
+READY TO BEGIN:
+
+[First specific prompt/question for the new phase]
+#+END_SRC
+
+
+*** *When to Use Clean Handoffs*:
+  - *After Phase 1.2* -> Before Phase 2.1 (carry forward: Intent Document + Negative Space Map)
+  - *After Phase 2.1* -> Before Phase 2.2 (carry forward: Intent + Negative Space + Draft Specifications)
+  - *After Phase 2.2* -> Before Phase 3.1 (carry forward: Final Specifications + Reuse Assessment)
+  - *After Phase 2.2* -> Before Phase 3.1 (carry forward: Final Specifications + Reuse Assessment)
+
+*** Benefits:
+  - Prevents context window bloat from lengthy Socratic dialogues
+  - Maintains sharp focus for each development phase
+  - Preserves essential work products while discarding conversational noise
+  - Allows for more precise LLM interactions in later phases
+
 * Phase 1: Project Bootstrap
 :PROPERTIES:
 :PHASE: 1
@@ -194,6 +242,9 @@ Be my Socratic teacher. Ask questions to help me identify what works for simple 
 **** HUMAN OUTPUT
 Negative Space Map document (created by human, consolidating notes from all four dialogues) listing identified failure modes and their potential cascading effects.
 
+**** Phase Transition Note
+Before proceeding to Phase 2.1, consider using the Phase Transition Template (Section 3.3) to start fresh with a clean context window, carrying forward only your Intent Document and completed Negative Space Map.
+
 * Phase 2: Specification Development
 :PROPERTIES:
 :PHASE: 2
@@ -238,6 +289,9 @@ Start with the highest-level architectural decisions and progressively get more 
 - *HUMAN OUTPUT*: Draft technical specifications with rationale for each design decision
 
 *Continue until*: You have systematically explored all major design decisions and their implications.
+
+*** Phase Transition Note
+The extensive design dialogue in this phase may warrant a clean context reset before Phase 2.2 using the Phase Transition Template.
 
 ** 2.2 Specification Iteration and Validation
 :PROPERTIES:
@@ -363,6 +417,8 @@ Be systematic and thorough. Prioritize code reuse where appropriate to accelerat
 **** LLM OUTPUT
 - *Document 1*: Prompt Engineering Guide (structured for LLM consumption)
 - *Document 2*: Personal Todo List (structured for human project management)
+**** Phase Transition Note.
+The extensive design dialogue in this phase may warrant a clean context reset before Phase 2.2 using the Phase Transition Template.
 
 *** 3.2 Decomposition Quality Control
 :PROPERTIES:
