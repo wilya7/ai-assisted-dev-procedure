@@ -64,14 +64,12 @@ ai-assisted-dev-procedure/
 ├── README.md
 ├── LICENSE
 ├── docs/
-│   ├── procedure.md          # Complete methodology
-│   └── examples/            # Real-world usage examples
+│   └── procedure.md          # Complete methodology
+│   
 ├── templates/
 │   ├── intent-document.md   # Phase 1.1 template
 │   ├── negative-space.md    # Phase 1.2 template
-│   └── specifications.md    # Phase 2 template
-├── examples/
-│   └── sample-projects/     # Complete example implementations
+│   └── specifications.md    # Phase 2 template   
 └── src/
     └── procedure.org        # Original org-mode source
 ```
